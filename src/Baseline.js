@@ -46,14 +46,16 @@ Baseline.propTypes = {
   type: PropTypes.string,
   lineHeight: PropTypes.number,
   color: PropTypes.string,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  style: PropTypes.object
 };
 
 Baseline.defaultProps = {
   isVisible: true,
   type: 'line',
   lineHeight: 9,
-  color: 'rgba(0, 0, 0, 0.15)'
+  color: 'rgba(0, 0, 0, 0.15)',
+  style: {}
 };
 
 export default Baseline;
