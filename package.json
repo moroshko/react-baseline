@@ -14,6 +14,7 @@
     "copy-static-files": "cp demo/src/index.html demo/dist/",
     "dist": "rm -rf dist && mkdir dist && babel src/Baseline.js --out-file dist/Baseline.js",
     "build": "npm run lint",
+    "preversion": "npm run build",
     "postversion": "git push && git push --tags",
     "prepublish": "npm run dist"
   },
