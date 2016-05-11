@@ -1,6 +1,6 @@
 {
   "name": "react-baseline",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Add baseline overlay to your React components",
   "main": "dist/Baseline.js",
   "repository": {
