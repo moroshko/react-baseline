@@ -1,4 +1,5 @@
-import React, { Children, PropTypes } from 'react';
+import React, { Children } from 'react';
+import PropTypes from 'prop-types';
 
 function calculateBackground(type, lineHeight, color) {
   if (type === 'line') {
@@ -6,18 +7,26 @@ function calculateBackground(type, lineHeight, color) {
 
     return {
       backgroundSize: `100% ${lineHeight}px`,
-      backgroundImage: `linear-gradient(to bottom, transparent 0%, transparent ${percentage}%, ${color} ${percentage}%, ${color} 100%)`
+      backgroundImage: `linear-gradient(to bottom, transparent 0%, transparent ${percentage}%, ${color} ${percentage}%, ${color} 100%)`,
     };
   }
 
   return {
     backgroundSize: `100% ${lineHeight * 2}px`,
-    backgroundImage: `linear-gradient(to bottom, ${color} 50%, transparent 50%, transparent 100%)`
+    backgroundImage: `linear-gradient(to bottom, ${color} 50%, transparent 50%, transparent 100%)`,
   };
 }
 
 function Baseline(props) {
-  const { isVisible, type, lineHeight, color, children, style, ...restProps } = props;
+  const {
+    isVisible,
+    type,
+    lineHeight,
+    color,
+    children,
+    style,
+    ...restProps
+  } = props;
   const baselineStyle = {
     position: 'absolute',
     top: 0,
@@ -25,16 +34,16 @@ function Baseline(props) {
     bottom: 0,
     right: 0,
     pointerEvents: 'none',
-    ...calculateBackground(type, lineHeight, color)
+    ...calculateBackground(type, lineHeight, color),
   };
   const rootProps = {
     ...restProps,
-    style: { ...style, position: 'relative' }
+    style: { ...style, position: 'relative' },
   };
 
   return (
     <div {...rootProps}>
-      { isVisible && <div style={baselineStyle}></div> }
+      {isVisible && <div style={baselineStyle} />}
       {Children.only(children)}
     </div>
   );
@@ -46,7 +55,7 @@ Baseline.propTypes = {
   lineHeight: PropTypes.number,
   color: PropTypes.string,
   children: PropTypes.node.isRequired,
-  style: PropTypes.object
+  style: PropTypes.object,
 };
 
 Baseline.defaultProps = {
@@ -54,7 +63,7 @@ Baseline.defaultProps = {
   type: 'line',
   lineHeight: 9,
   color: 'rgba(0, 0, 0, 0.15)',
-  style: {}
+  style: {},
 };
 
 export default Baseline;
